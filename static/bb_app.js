@@ -8,8 +8,8 @@ function buildData(sample)
       console.log(metadata);
 
     // Filter the data
-    var buildingArray = metadata.filter(sampleObj => sampleObj.id == sample);
-    var result = buildingArray[0];
+    var buildarr = metadata.filter(sampleObj => sampleObj.id == sample);
+    var result = buildarr[0];
     // Use d3 to select
     var panelData = d3.select("#sample-metadata");
 
@@ -26,11 +26,11 @@ function buildData(sample)
 
 function buildCharts(sample) 
 {
-    d3.json("data/samples.json").then((data) => 
+    d3.json("data/samples.json").then((jsondata) => 
     {
-      var sampleData = data.data/samples;
-      var buildingArray = sampleData.filter(sampleObj => sampleObj.id == sample);
-      var result = buildingArray[0];
+      var sampleData = jsondata.samples;
+      var buildarr = sampleData.filter(sampleObj => sampleObj.id == sample);
+      var result = buildarr[0];
   
       var otu_ids = result.otu_ids;
       var otu_labels = result.otu_labels;
@@ -92,9 +92,9 @@ function init()
     var selectDropdown = d3.select("#selDataset");
   
     // Populate the select options by using the list of sample names
-    d3.json("data/data/samples.json").then((data) => 
+    d3.json("data/samples.json").then((jsondata) => 
     {
-      var name = data.names;
+      var name = jsondata.names;
   
       name.forEach((sample) => 
       {
