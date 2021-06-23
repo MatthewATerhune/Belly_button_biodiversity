@@ -54,7 +54,7 @@ function buildCharts(sample)
           {
             size: sample_values,
             color: otu_ids,
-            colorscale: "Earth"
+            colorscale: "YlGnBu"
           }
         }
       ];
